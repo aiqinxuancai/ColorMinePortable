@@ -52,10 +52,56 @@ namespace ColorMine.ColorSpaces
             bytes[2] = (byte)(int)B;
             return System.BitConverter.ToInt32(bytes, 0);
         }
+
+
+
+        #region Equality members
+
+        public bool Equals(Rgb other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.R == R && other.G == G && other.B == B;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Rgb)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{R}.{G}.{B}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return ToInt32().ToString();
+        }
+
+        #endregion
     }
 
 
-	public interface IXyz : IColorSpace
+    public interface IXyz : IColorSpace
     {
 
 		double X { get; set; }
@@ -85,10 +131,12 @@ namespace ColorMine.ColorSpaces
         {
             return XyzConverter.ToColor(this);
         }
+
+        
     }
 
 
-	public interface IHsl : IColorSpace
+    public interface IHsl : IColorSpace
     {
 
 		double H { get; set; }
