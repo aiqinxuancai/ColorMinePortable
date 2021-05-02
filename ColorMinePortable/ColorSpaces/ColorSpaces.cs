@@ -132,7 +132,49 @@ namespace ColorMine.ColorSpaces
             return XyzConverter.ToColor(this);
         }
 
-        
+        #region Equality members
+
+        public bool Equals(Xyz other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.X == X && other.Y == Y && other.Z == Z;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Xyz)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{X}-{Y}-{Z}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'X':{X}, 'Y':{Y}, 'Z':{Z}}}".ToString();
+        }
+
+        #endregion
     }
 
 
@@ -166,10 +208,54 @@ namespace ColorMine.ColorSpaces
         {
             return HslConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Hsl other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.H == H && other.S == S && other.L == L;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Hsl)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{H}-{S}-{L}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'H':{H}, 'S':{S}, 'L':{L}}}".ToString();
+        }
+
+        #endregion
     }
 
 
-	public interface ILab : IColorSpace
+    public interface ILab : IColorSpace
     {
 
 		double L { get; set; }
@@ -199,10 +285,54 @@ namespace ColorMine.ColorSpaces
         {
             return LabConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Lab other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.L == L && other.A == A && other.B == B;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Lab)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{L}-{A}-{B}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'L':{L}, 'A':{A}, 'B':{B}}}".ToString();
+        }
+
+        #endregion
     }
 
 
-	public interface ILch : IColorSpace
+    public interface ILch : IColorSpace
     {
 
 		double L { get; set; }
@@ -232,10 +362,54 @@ namespace ColorMine.ColorSpaces
         {
             return LchConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Lch other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.L == L && other.C == C && other.H == H;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Lch)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{L}-{C}-{H}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'L':{L}, 'C':{C}, 'H':{H}}}".ToString();
+        }
+
+        #endregion
     }
 
 
-	public interface ILuv : IColorSpace
+    public interface ILuv : IColorSpace
     {
 
 		double L { get; set; }
@@ -265,10 +439,54 @@ namespace ColorMine.ColorSpaces
         {
             return LuvConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Luv other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.L == L && other.U == U && other.V == V;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Luv)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{L}-{U}-{V}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'L':{L}, 'U':{U}, 'V':{V}}}".ToString();
+        }
+
+        #endregion
     }
 
 
-	public interface IYxy : IColorSpace
+    public interface IYxy : IColorSpace
     {
 
 		double Y1 { get; set; }
@@ -298,10 +516,54 @@ namespace ColorMine.ColorSpaces
         {
             return YxyConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Yxy other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.Y1 == Y1 && other.X == X && other.Y2 == Y2;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Yxy)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{Y1}-{X}-{Y2}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'Y1':{Y1}, 'X':{X}, 'Y2':{Y2}}}".ToString();
+        }
+
+        #endregion
     }
 
 
-	public interface ICmy : IColorSpace
+    public interface ICmy : IColorSpace
     {
 
 		double C { get; set; }
@@ -331,10 +593,54 @@ namespace ColorMine.ColorSpaces
         {
             return CmyConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Cmy other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.C == C && other.M == M && other.Y == Y;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Cmy)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{C}-{M}-{Y}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'C':{C}, 'M':{M}, 'Y':{Y}}}".ToString();
+        }
+
+        #endregion
     }
 
 
-	public interface ICmyk : IColorSpace
+    public interface ICmyk : IColorSpace
     {
 
 		double C { get; set; }
@@ -368,10 +674,53 @@ namespace ColorMine.ColorSpaces
         {
             return CmykConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Cmyk other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.C == C && other.M == M && other.Y == Y && other.K == K;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Cmyk)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{C}-{M}-{Y}-{K}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'C':{C}, 'M':{M}, 'Y':{Y}, 'K':{K}}}".ToString();
+        }
+        #endregion
     }
 
 
-	public interface IHsv : IColorSpace
+    public interface IHsv : IColorSpace
     {
 
 		double H { get; set; }
@@ -401,10 +750,54 @@ namespace ColorMine.ColorSpaces
         {
             return HsvConverter.ToColor(this);
         }
+
+
+        #region Equality members
+
+        public bool Equals(Hsv other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.H == H && other.S == S && other.V == V;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Hsv)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{H}-{S}-{V}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'H':{H}, 'S':{S}, 'V':{V}}}".ToString();
+        }
+        #endregion
     }
 
 
-	public interface IHsb : IColorSpace
+    public interface IHsb : IColorSpace
     {
 
 		double H { get; set; }
@@ -434,10 +827,53 @@ namespace ColorMine.ColorSpaces
         {
             return HsbConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(Hsb other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.H == H && other.S == S && other.B == B;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((Hsb)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{H}-{S}-{B}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'H':{H}, 'S':{S}, 'B':{B}}}".ToString();
+        }
+        #endregion
     }
 
 
-	public interface IHunterLab : IColorSpace
+    public interface IHunterLab : IColorSpace
     {
 
 		double L { get; set; }
@@ -467,6 +903,49 @@ namespace ColorMine.ColorSpaces
         {
             return HunterLabConverter.ToColor(this);
         }
+
+        #region Equality members
+
+        public bool Equals(HunterLab other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return other.L == L && other.A == A && other.B == B;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((HunterLab)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{L}-{A}-{B}".GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{{'L':{L}, 'A':{A}, 'B':{B}}}".ToString();
+        }
+        #endregion
     }
 
 
