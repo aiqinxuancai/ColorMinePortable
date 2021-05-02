@@ -6,6 +6,9 @@ This program uses the following munsell data.
 
 http://www.rit.edu/cos/colorscience/rc_munsell_renotation.php real.dat
 
+## Changes relative to the original version
+Add the rewrite of "GetHashCode" and "Equals" functions of Rgb, Hsv and other classes to make it more convenient to compare the values.
+
 ## Nuget Installation
 
 ```bash
