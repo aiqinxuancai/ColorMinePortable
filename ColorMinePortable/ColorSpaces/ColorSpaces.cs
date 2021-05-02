@@ -43,6 +43,15 @@ namespace ColorMine.ColorSpaces
         {
             return RgbConverter.ToColor(this);
         }
+
+        public int ToInt32()
+        {
+            byte[] bytes = new byte[4];
+            bytes[0] = (byte)(int)R;
+            bytes[1] = (byte)(int)G;
+            bytes[2] = (byte)(int)B;
+            return System.BitConverter.ToInt32(bytes, 0);
+        }
     }
 
 
