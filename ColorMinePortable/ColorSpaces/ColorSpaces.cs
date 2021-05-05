@@ -53,6 +53,17 @@ namespace ColorMine.ColorSpaces
             return System.BitConverter.ToInt32(bytes, 0);
         }
 
+        public static Rgb Parse(int color)
+        {
+            Rgb rgb = new Rgb();
+            byte[] bytes = System.BitConverter.GetBytes(color);
+            rgb.R = bytes[0];
+            rgb.G = bytes[1];
+            rgb.B = bytes[2];
+
+            return rgb;
+        }
+
 
 
         #region Equality members
