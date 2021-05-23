@@ -762,6 +762,14 @@ namespace ColorMine.ColorSpaces
             return HsvConverter.ToColor(this);
         }
 
+        public static Hsv Parse(double H, double S, double V)
+        {
+            Hsv hsv = new Hsv();
+            hsv.H = H;
+            hsv.S = S;
+            hsv.V = V;
+            return hsv;
+        }
 
         #region Equality members
 
