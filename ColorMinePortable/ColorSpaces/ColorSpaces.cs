@@ -209,6 +209,14 @@ namespace ColorMine.ColorSpaces
 
 		public double L { get; set; }
 
+        public static Hsl Parse(double H, double S, double L)
+        {
+            Hsl hsl = new Hsl();
+            hsl.H = H;
+            hsl.S = S;
+            hsl.L = L;
+            return hsl;
+        }
 
         public override void Initialize(IRgb color)
         {
